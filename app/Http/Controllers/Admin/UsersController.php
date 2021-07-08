@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function getUsers()
     {
-        $users = User::where('role_id','!=','1')->get();
+        $users = User::where('role_id','!=','3')->get();
         return view('admin.users.index')->with('users',$users);
     }
     public function userEdit($id)

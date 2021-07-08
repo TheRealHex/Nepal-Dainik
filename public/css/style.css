@@ -14,7 +14,7 @@ ul{padding:0; margin:0; list-style:none}
 a{text-decoration:none; color:#2f2f2f}
 a:hover{color:#646464; text-decoration:none}
 a:focus{outline:none; text-decoration:none}
-h1, h2, h3, h4, h5, h6{font-family:'Oswald',sans-serif}
+/*h1, h2, h3, h4, h5, h6{font-family:sans-serif;}*/
 h2{line-height:23px}
 img{border:none}
 img:hover{opacity:0.75}
@@ -220,7 +220,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .breadcrumb{background-color:#303030; border-radius:0}
 .breadcrumb li a{color:#fff}
 .single_page_content{display:inline; float:left; padding-top:20px; width:100%; border-bottom:1px solid #ddd; padding-bottom:20px}
-.single_page_content > img{max-width:100%; width:60%; height:40%; margin-bottom:15px}
+.single_page_content > img{max-width:100%; width:80%; margin-bottom:15px}
 .single_page_content ul{position:relative; padding-left:25px}
 .single_page_content ul li{line-height:25px}
 .single_page_content ul li:before{content:""; height:5px; left:5px; position:absolute; width:9px; margin-top:8px}
@@ -243,7 +243,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .related_post{display:inline; float:left; margin-top:0; width:100%; margin-bottom:20px}
 .related_post > h2{border-bottom:1px solid #e3e3e3; padding-bottom:5px}
 .related_post > h2 i{font-size:25px}
-.related_post .spost_nav li{width:32%; margin-right:10px}
+.related_post .spost_nav li{width:32%; margin-right:103px}
 .related_post .spost_nav li:last-child{margin-right:0}
 .nav-slit a{position:fixed; top:50%; display:block; outline:none; text-align:left; z-index:1000; -webkit-transform:translateY(-50%); transform:translateY(-50%)}
 .nav-slit a.prev{left:0}

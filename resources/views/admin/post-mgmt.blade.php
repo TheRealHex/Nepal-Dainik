@@ -9,7 +9,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">My Posts</h4>
+                <h4 class="card-title">Manage Posts</h4>
                     @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -35,6 +35,9 @@
                             <th>
                                 Content
                             </th>
+                            <th>
+                                Status
+                            </th>
                             </thead>
                             <tbody>
                             @foreach ($posts as $row)
@@ -52,18 +55,36 @@
                                       {{ $row->category->name }}
                                     </td>
                                     <td>
-                                      {{ substr($row->content,0,90) }}
+                                      {{ substr($row->content,0,20) }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('edit.post',$row->id) }}" class="btn btn-success rounded shadow font-weight-bold">Edit</a>
+                                        @if ( ($row->status) == 'approve' )
+                                            <a class="btn btn-success rounded font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                        @elseif ( ($row->status) == 'decline' )
+                                            <a class="btn btn-danger rounded font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                        @else
+                                            <a class="btn btn-warning rounded shadow font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                        @endif
+                                        <form action="{{ route('manage.postStatus',$row->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('PUT') }}
+                                            <select class="form-control" name="status">
+                                                <option value="approve">Approve</option>
+                                                <option value="decline">Decline</option>
+                                            </select>
+                                            <button class="btn btn-info" type="submit"><i class="fas fa-check-circle"></i></button>
+                                        </form>
+                                    </td>
+                                    {{-- <td>
+                                        <a href="{{ route('edit.post',$row->id) }}" class="btn btn-sm  btn-success rounded"><i class="fas fa-pencil-alt"></i></a>
                                     </td>
                                     <td>
                                         <form action="{{ route('delete.post',$row->id) }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger shadow font-weight-bold" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
-                                                Delete
+                                            <button type="button" class="btn btn-sm  btn-danger  rounded" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
+                                                <i class="fas fa-trash"></i>
                                             </button>
 
                                             <!-- Modal -->
@@ -85,7 +106,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </form>
                                     </td>
                                 </tr>

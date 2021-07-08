@@ -32,6 +32,9 @@
                             <th>
                                 Content
                             </th>
+                            <th>
+                                Status
+                            </th>
                             </thead>
                             <tbody>
                             @foreach ($posts as $row)
@@ -47,6 +50,11 @@
                                     </td>
                                     <td>
                                       {{ substr($row->content,0,90) }}
+                                    </td>
+                                    <td>
+                                        <span class="btn btn-info rounded-lg font-weight-bold">
+                                            {{ ucfirst($row->status) }}
+                                        </span>
                                     </td>
                                     <td>
                                         <a href="{{ route('edit.post',$row->id) }}" class="btn btn-success rounded shadow font-weight-bold">Edit</a>

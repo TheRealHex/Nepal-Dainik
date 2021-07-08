@@ -25,17 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role_id == 1)
+        if(Auth::user()->role_id == 3)
         {
             $editor = User::where('role_id','=','2')->count();
-            $writer = User::where('role_id','=','3')->count();
+            $writer = User::where('role_id','=','1')->count();
             return view('admin.dashboard',compact('writer','editor'));
         }
         elseif(Auth::user()->role_id == 2)
         {
             return view('editor.dashboard');
         }
-        elseif(Auth::user()->role_id == 3)
+        elseif(Auth::user()->role_id == 1)
         {
             return view('writer.dashboard');
         }

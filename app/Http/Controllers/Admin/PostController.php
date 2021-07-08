@@ -14,17 +14,21 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $posts=Post::with('category')->where('user_id','=',Auth()->id())->get();
-        return view('writer.post-mgmt',compact('posts'));
-    }
     public function adminIndex()
     {
         $posts=Post::with('category')->get();
         return view('admin.post-mgmt',compact('posts'));
     }
-
+    public function writerIndex()
+    {
+        $posts=Post::with('category')->where('user_id','=',Auth()->id())->get();
+        return view('writer.post-mgmt',compact('posts'));
+    }
+    public function editorIndex()
+    {
+        $posts=Post::with('category')->where('user_id','=',Auth()->id())->get();
+        return view('editor.post-mgmt',compact('posts'));
+    }
     public function my_posts()
     {
         return view('writer.myposts');
@@ -68,6 +72,7 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->cat_id = $request->input('cat_id');
         $post->user_id = Auth()->id();
+        $posts->status = 'pending';
         $post->save();
         return redirect()->route('post.index')->with('status','Post added on pending.');
     }
@@ -84,12 +89,16 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function status(Request $request, $id)
+    {
+        // dd($request->all());
+        $post = Post::find($id);
+        // dd($post);
+        $post->status = $request->input('status');
+        $post->update();
+        return redirect()->route('getPosts')->with('status','Status Updated.');
+    }
+
     public function edit($id)
     {
         $post = Post::find($id);
@@ -98,13 +107,7 @@ class PostController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
@@ -112,16 +115,11 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->cat_id = $request->input('cat_id');
         $post->user_id = Auth()->id();
+        $posts->status = 'pending';
         $post->update();
         return redirect()->route('post.index')->with('status','Post Updated.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $post = Post::find($id);

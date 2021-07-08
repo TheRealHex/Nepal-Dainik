@@ -1,0 +1,44 @@
+.ticker {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 2% 0;
+}
+
+.news {
+    width: 88%;
+    background: #cc4444;
+    padding: 0 2%
+}
+
+
+.title {
+    width: 12%;
+    font-weight: bold;
+    text-align: center;
+    background: #c81c1c;
+    position: relative;
+    color: white;
+}
+
+/*.title:after {
+    position: absolute;
+    content: "";
+    right: -22%;
+    top: 0px
+    }*/
+
+    .title h5 {
+        font-size: 18px;
+        margin: 8% 0
+    }
+
+    .news marquee {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .news-content p {
+        margin-right: 41px;
+        display: inline;
+        color: white;
+    }

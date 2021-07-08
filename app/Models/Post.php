@@ -8,7 +8,7 @@ use App\User;
 class Post extends Model
 {
     protected $table="posts";
-    protected $fillable = ['title','image','content','cat_id','user_id'];
+    protected $fillable = ['title','image','content','cat_id','user_id','status'];
     public function category()
     {
         return $this->belongsTo(Category::class,'cat_id');

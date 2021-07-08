@@ -38,6 +38,12 @@
               <p>Dashboard</p>
             </a>
           </li >
+          <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
+            <a href="./pending-posts">
+              <i class="now-ui-icons ui-1_bell-53"></i>
+              <p>Pending Posts</p>
+            </a>
+          </li>
           <li class="{{'post-mgmt' == request()->path()? 'active' : ''}}">
             <a href="./post-mgmt">
               <i class="now-ui-icons education_atom"></i>
@@ -47,19 +53,7 @@
           <li class="{{'users' == request()->path()? 'active' : ''}}">
             <a href="{{ route('getUsers') }}">
               <i class="now-ui-icons users_single-02"></i>
-              <p>User Management</p>
-            </a>
-          </li>
-          <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
-            <a href="./pending-posts">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Pending Posts</p>
-            </a>
-          </li>
-          <li class="{{'user-profile' == request()->path()? 'active' : ''}}">
-            <a href="./user-profile">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
+              <p>Writers</p>
             </a>
           </li>
         </ul>
