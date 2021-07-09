@@ -21,9 +21,9 @@ class websiteController extends Controller
     public function index()
     {
         $category=Category::get();
-        $hotPost = Post::get();
-        $natPost = Post::where('cat_id','=',1)->limit(4)->get();
-        $post = Post::latest()->limit(3)->get();
+        $hotPost = Post::where('status','=','approve')->get();
+        $natPost = Post::where('status','=','approve')->where('cat_id','=',1)->limit(4)->get();
+        $post = Post::where('status','=','approve')->latest()->limit(3)->get();
         return view('newshome.index',compact('post','category','hotPost','natPost'));
     }
     public function showPost($title)

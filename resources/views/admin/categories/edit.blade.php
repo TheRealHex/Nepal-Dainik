@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="p-1">Categories</h4>
+                        <h4 class="p-1">Edit Category</h4>
                         <div class="card-body col">
                             <form action="{{route('categories.update',$category->id)}}" method="POST" class="font-weight-bold">
                                 {{ csrf_field() }}
@@ -19,8 +19,8 @@
                                     <label class="col-form-label">Name&nbsp;&nbsp;&nbsp;</label>
                                     <input type="text" class="form-control col" name="catName" value="{{$category->name}}">
                                 </div>
-                                <a class="btn btn-danger float-right font-weight-bold p-3 ml-3 shadow text-light" href="{{ route('categories.index') }}">Cancel</a>
-                                <button type="submit" class="btn btn-success float-right font-weight-bold p-3 shadow">Update</button>
+                                <a class="btn btn-danger float-right font-weight-bold" href="{{ route('categories.index') }}">x</a>
+                                <button type="submit" class="btn btn-success float-right shadow"><i class="fas fa-check-circle"></i></button>
                             </form>
                         </div>
                     </div>

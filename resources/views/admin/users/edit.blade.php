@@ -22,12 +22,15 @@
                                 <div class="form-group row m-4">
                                     <label class="col-form-label">User Type&nbsp;&nbsp;&nbsp;</label>
                                     <select name="usertype" class="form-control col">
-                                        <option value="writer" @if($users->usertype == 'writer') ? selected @endif>Writer</option>
-                                        <option value="editor" @if($users->usertype == 'editor') ? selected @endif>Editor</option>
+                                        @foreach ($roles as $r)
+                                            <option value="{{$r->id}}" @if($users->role_id == $r->id) ? selected @endif >{{$r->type}}</option>
+                                        @endforeach
+{{--                                         <option value="writer" @if($users->usertype == 'writer') ? selected @endif>Writer</option>
+                                        <option value="editor" @if($users->usertype == 'editor') ? selected @endif>Editor</option> --}}
                                     </select>
                                 </div>
-                                <a class="btn btn-danger float-right font-weight-bold p-3 ml-3 shadow text-light" href="{{ route('getUsers') }}">Cancel</a>
-                                <button type="submit" class="btn btn-success float-right font-weight-bold p-3 shadow">Update</button>
+                                <a class="btn btn-danger float-right font-weight-bold shadow" href="{{ route('getUsers') }}">x</a>
+                                <button type="submit" class="btn btn-success float-right shadow"><i class="fas fa-check-circle"></i></button>
                             </form>
                         </div>
                     </div>

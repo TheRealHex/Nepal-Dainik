@@ -20,7 +20,7 @@
 
 <body class="">
   <div class="wrapper">
-    <div class="sidebar" data-color='red' style="font-size: 18px;">
+    <div class="sidebar" data-color='yellow' style="font-size: 18px;">
       <div class="logo simple-text logo-normal">
         <a class="simple-text logo-normal text-align-center font-weight-bold">
           Writer Panel

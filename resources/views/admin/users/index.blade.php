@@ -35,6 +35,12 @@
                             <th>
                                 Role
                             </th>
+                            <th>
+                                Edit
+                            </th>
+                            <th>
+                                Delete
+                            </th>
                             </thead>
                             <tbody>
                             @foreach ($users as $row)
@@ -52,10 +58,12 @@
                                         {{ $row->phone }}
                                     </td>
                                     <td>
-                                        {{ $row->usertype }}
+                                        <a class="btn btn-info btn-sm font-weight-bold text-white" style="border-radius:5em;"> 
+                                            {{ $row->role->type }}
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('userEdit',$row->id) }}" class="btn btn-success rounded shadow font-weight-bold">Edit</a>
+                                        <a href="{{ route('userEdit',$row->id) }}" class="btn btn-success rounded shadow"><i class="fas fa-pencil-alt"></i></a>
                                     </td>
                                     <td>
                                         <form action="{{ route('userDelete',$row->id) }}" method="post">
@@ -63,7 +71,7 @@
                                         {{ method_field('DELETE') }}
                                         <!-- Button trigger modal -->
                                             <button type="button" class="btn btn-danger shadow font-weight-bold" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
-                                                Delete
+                                                <i class="fas fa-trash"></i>
                                             </button>
 
                                             <!-- Modal -->

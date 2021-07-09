@@ -38,6 +38,9 @@
                             <th>
                                 Status
                             </th>
+                            <th>
+                                Submit
+                            </th>
                             </thead>
                             <tbody>
                             @foreach ($posts as $row)
@@ -58,21 +61,24 @@
                                       {{ substr($row->content,0,20) }}
                                     </td>
                                     <td>
+                                        <br>
                                         @if ( ($row->status) == 'approve' )
-                                            <a class="btn btn-success rounded font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                            <a class="btn btn-success rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                                         @elseif ( ($row->status) == 'decline' )
-                                            <a class="btn btn-danger rounded font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                            <a class="btn btn-danger rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                                         @else
-                                            <a class="btn btn-warning rounded shadow font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                            <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                                         @endif
                                         <form action="{{ route('manage.postStatus',$row->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('PUT') }}
-                                            <select class="form-control" name="status">
+                                            <br><select class="form-control-sm rounded border-0" name="status">
                                                 <option value="approve">Approve</option>
                                                 <option value="decline">Decline</option>
                                             </select>
-                                            <button class="btn btn-info" type="submit"><i class="fas fa-check-circle"></i></button>
+                                            <td>
+                                                
+                                            <br><button class="btn btn-info" type="submit"><i class="fas fa-check-circle"></i></button><br><br>
                                         </form>
                                     </td>
                                     {{-- <td>

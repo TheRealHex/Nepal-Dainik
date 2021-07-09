@@ -16,7 +16,7 @@ class WriterMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role_id == 1)
+        if(Auth::user()->role->type == 'writer')
         {
             return $next($request);
         }

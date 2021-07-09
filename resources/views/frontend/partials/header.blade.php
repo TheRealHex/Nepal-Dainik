@@ -11,7 +11,7 @@
                     <ul class="top_nav">
                         <div class="header_top_right">
                             <div class = "btn-group">
-                                <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="background: #353535;color: white;">
+                                <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="background: #353535; color: white; border-radius: 6px;">
                                     User
                                 </button>
                                 <ul class = "dropdown-menu" role = "menu">

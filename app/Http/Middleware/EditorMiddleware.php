@@ -16,7 +16,7 @@ class EditorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role_id == 2)
+        if(Auth::user()->role->type == 'editor')
         {
             return $next($request);
         }

@@ -35,6 +35,9 @@
                             <th>
                                 Status
                             </th>
+                            <th>
+                                Actions
+                            </th>
                             </thead>
                             <tbody>
                             @foreach ($posts as $row)
@@ -49,25 +52,27 @@
                                       {{ $row->category->name }}
                                     </td>
                                     <td>
-                                      {{ substr($row->content,0,90) }}
+                                      {{ substr($row->content,0,60) }}
                                     </td>
                                     <td>
-                                        <span class="btn btn-info rounded-lg font-weight-bold">
-                                            {{ ucfirst($row->status) }}
-                                        </span>
+                                        @if ( ($row->status) == 'approve' )
+                                            <a class="btn btn-success rounded text-white font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                        @elseif ( ($row->status) == 'decline' )
+                                            <a class="btn btn-danger rounded text-white font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                        @else
+                                            <a class="btn btn-warning rounded text-white font-weight-bold">{{ ucfirst($row->status) }}</a>
+                                        @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('edit.post',$row->id) }}" class="btn btn-success rounded shadow font-weight-bold">Edit</a>
-                                    </td>
-                                    <td>
+                                        <hr><a href="{{ route('edit.post',$row->id) }}" class="btn btn-sm btn-info rounded"><i class="fas fa-pencil-alt"></i></a>
                                         <form action="{{ route('delete.post',$row->id) }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger shadow font-weight-bold" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
-                                                Delete
+                                            <br><button type="button" class="btn btn-sm btn-danger rounded" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
+                                                <i class="fas fa-trash"></i>
                                             </button>
-
+                                            <hr>
                                             <!-- Modal -->
                                             <div class="modal fade" id="confirmdelete{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
