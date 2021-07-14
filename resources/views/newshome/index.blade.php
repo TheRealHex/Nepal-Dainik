@@ -10,18 +10,16 @@
     <div class="title">
       <h5>Breaking News</h5>
     </div>
-    <div class="news">
-      <marquee class="news-content" scrolldelay="150">
-        @foreach($breakingNews as $b)
-        <li style="display:inline-block;">
-          <div class="media">
-            <div class="media-body" style="padding-right: 3em;">
-              <a href="{{route('newshome.showPost',$b->title)}}" style="color: whitesmoke;">{{$b->title}}</a> 
-            </div>
+    <div class="news marquee">
+      @foreach($breakingNews as $b)
+      <li style="display:inline-block;">
+        <div class="media">
+          <div class="media-body" style="padding-right: 3em;">
+            <a href="{{route('newshome.showPost',$b->title)}}" style="color: whitesmoke;">{{$b->title}}</a> 
           </div>
-        </li>
-        @endforeach
-      </marquee>
+        </div>
+      </li>
+      @endforeach
     </div>
   </div>
   <div class="row">
@@ -226,6 +224,18 @@
       </aside>
     </div>
   </div>
-    <img src="image/CG.gif" width="100%">
+  <br><br>
+  <div class="banner_ads">
+    
+    <marquee behavior="scroll" direction="left">
+      @foreach ($breakingNews as $b)
+      <li style="display:inline-block">
+        <a href="#"></a>
+        <img src="/image/CG.gif" alt="">
+      </li>
+      @endforeach
+    </marquee>
+    <br><br>
+  </div>
 </section>
 @endsection

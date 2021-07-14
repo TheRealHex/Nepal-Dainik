@@ -12,5 +12,6 @@
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/ticker.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/marquee.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body style="background-color: #eee;">

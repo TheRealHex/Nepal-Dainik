@@ -33,7 +33,7 @@ Create a new post
                                 </script>
                             </div>
                             <div class="ml-5 mt-5">
-                               <select class="form-control-sm rounded border-0" name="cat_id">
+                             <select class="form-control-sm rounded border-0" name="cat_id">
                                 <option disabled>Select Category</option>
                                 @foreach($category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->name}}</option>

@@ -54,17 +54,17 @@
               <i class="now-ui-icons education_paper"></i>
               <p>Manage Posts</p>
             </a>
-            <ul class="dropdown-menu m-4" style="  width: 100%; text-align: center; background-color: transparent;" aria-labelledby="navbarDropdownMenuLink1">
-              <li class="{{'manage-posts' == request()->path()? 'active' : ''}}">
-                <a href="{{ route('approvedPosts') }}">
-                  <i class="now-ui-icons files_single-copy-04"></i>
-                  <p>Approved Posts</p>
-                </a>
-              </li>
+            <ul class="dropdown-menu m-4" style="  width: 100%; text-align: center; background-color: #333; border-radius: 2em;" aria-labelledby="navbarDropdownMenuLink1">
               <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
                 <a href="{{ route('pendingPosts') }}">
                   <i class="now-ui-icons sport_user-run"></i>
                   <p>Pending Posts</p>
+                </a>
+              </li>
+              <li class="{{'manage-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('approvedPosts') }}">
+                  <i class="now-ui-icons files_single-copy-04"></i>
+                  <p>Approved Posts</p>
                 </a>
               </li>
               <li class="{{'declined-posts' == request()->path()? 'active' : ''}}">
@@ -75,6 +75,38 @@
               </li>
             </ul>
           </div>
+          <div class="dropdown btn btn-info btn-sm font-weight-bold" style=" width: 80%;">
+            <a class=" " data-toggle="dropdown" id="navbarDropdownMenuLink1">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Manage Sponsors</p>
+            </a>
+            <ul class="dropdown-menu m-4" style="  width: 100%; text-align: center; background-color: #333; border-radius: 2em;" aria-labelledby="navbarDropdownMenuLink1">
+              <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('pendingPosts') }}">
+                  <i class="now-ui-icons sport_user-run"></i>
+                  <p>Pending Ads</p>
+                </a>
+              </li>
+              <li class="{{'manage-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('approvedPosts') }}">
+                  <i class="now-ui-icons files_single-copy-04"></i>
+                  <p>Approved Ads</p>
+                </a>
+              </li>
+              <li class="{{'declined-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('declinedPosts') }}">
+                  <i class="now-ui-icons design_scissors"></i>
+                  <p>Declined Ads</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <li class="{{'user-mgmt' == request()->path()? 'active' : ''}}">
+            <a href="#">
+              <i class="fa fa-user-circle"></i>
+              <p>Settings</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -99,25 +131,7 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons media-2_sound-wave"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
               <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }} <span class="caret"></span>

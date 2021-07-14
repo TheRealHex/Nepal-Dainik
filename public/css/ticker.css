@@ -2,18 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 0 2% 0;
-    /*border: 5px solid #ddd;*/
     border-radius: 2em;
     padding: 0 6px 0 6px;
-    background: #de5555;
+    background-color: #de5555;
+    font-weight: bold;
 }
-
 .news {
     width: 83%;
-    /*background: #333;*/
 }
-
-
 .title {
     width: 14%;
     font-weight: bold;
@@ -23,32 +19,13 @@
     color: #ddd;
     margin-right: 2em;
 }
+.title h5 {
+    font-size: 1.2em;
+    /*margin: 0 3px 0 3px;*/
+    /*margin:  0*/
+}
 
-/*.title:after {
-    position: absolute;
-    content: "";
-    right: -22%;
-    top: 0px
-    }*/
-
-    .title h5 {
-        font-size: 1.2em;
-        /*margin: 0 3px 0 3px;*/
-        /*margin:  0*/
-    }
-
-    .news marquee {
-        font-size: 1.15em;
-        margin-top: 10px;
-    }
-
-    .news-content p {
-        margin-right: 41px;
-        display: inline;
-        color: white;
-    }
-
-    @media(max-width:1199px ){.ticker { padding: 0; } .title{margin-right: 1em;} .news{}}
-    @media(max-width:564px ){.ticker {  } .title{margin: 0 2px 0 7px;} .news{width: 75%} .title > h5 {font-size: 1em;} .news > marquee{}}
-    @media(max-width:360px ){.ticker {  } .title{margin: 0 2em 0 7px;} .news{width: 75%} .title > h5 {font-size: 1em;} .news > marquee{}}
-    @media(max-width:411px ){.ticker {  } .title{margin: 0 2px 0 7px;} .news{width: 75%} .title > h5 {font-size: 1em;} .news > marquee{}}
+@media(max-width:1199px ){.ticker { padding: 0; } .title{margin-right: 1em;} .news{}}
+@media(max-width:564px ){.ticker {  } .title{margin: 0 2px 0 7px;} .news{width: 75%} .title > h5 {font-size: 1em;} .news > marquee{}}
+@media(max-width:360px ){.ticker {  } .title{margin: 0 2em 0 7px;} .news{width: 75%} .title > h5 {font-size: 1em;} .news > marquee{}}
+@media(max-width:411px ){.ticker {  } .title{margin: 0 2px 0 7px;} .news{width: 75%} .title > h5 {font-size: 1em;} .news > marquee{}}

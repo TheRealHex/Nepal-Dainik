@@ -3,7 +3,7 @@
 <div class="contanier">
     <div class="row justify-content-center" style="background-color: white;">
         <div class="col-md-10">
-                <h2>Search Results</h2><br>
+            <h2>Search Results</h2><br>
             <form action="">
                 <div class="form-group" style="display: inline;">
                     <input type="text" class="form-control form-control-sm" style="width: 70%" name="search" placeholder="Search"/><br>
@@ -29,4 +29,4 @@
             </table>
             <br><br>
         </div>
-@endsection
+        @endsection

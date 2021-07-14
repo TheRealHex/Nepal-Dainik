@@ -1,0 +1,30 @@
+.marquee {
+   /*height: 50px;  */
+   overflow: hidden;
+   position: relative;
+}
+.marquee .media .media-body {
+   /*position: absolute;*/
+   /*width: 0%;*/
+   /*height: 100%;*/
+   /*margin-right: 5em;*/
+   line-height: 50px;
+   /*text-align: center;*/
+   /* Starting position */
+   /*-moz-transform:translateX(100%);*/
+   /*-webkit-transform:translateX(100%);    */
+   transform:translateX(100%);
+   /* Apply animation to this element */  
+   /*-moz-animation: scroll-left 1s linear infinite;*/
+   /*-webkit-animation: scroll-left 1s linear infinite;*/
+   animation: scroll-left 12s linear infinite;
+}
+
+@keyframes scroll-left {
+   0%   { 
+     transform: translateX(100%);       
+  }
+  100% { 
+     transform: translateX(-90%); 
+  }
+}
