@@ -42,16 +42,16 @@
           </li>
           <li class="{{'post-mgmt' == request()->path()? 'active' : ''}}">
             <a href="/post-mgmt">
-              <i class="now-ui-icons education_atom"></i>
+              <i class="now-ui-icons location_map-big"></i>
               <p>Your Posts</p>
             </a>
           </li>
-          <li class="{{'user-mgmt' == request()->path()? 'active' : ''}}">
-            <a href="/user-mgmt">
-              <i class="now-ui-icons location_map-big"></i>
-              <p>Status</p>
+          {{-- <li class="{{'user-mgmt' == request()->path()? 'active' : ''}}">
+            <a href="{{route('writer.postStatus')}}">
+              <i class="now-ui-icons education_atom"></i>
+              <p>Settings</p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>

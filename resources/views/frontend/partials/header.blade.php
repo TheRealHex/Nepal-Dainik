@@ -10,17 +10,45 @@
                     </div>
                     <ul class="top_nav">
                         <div class="header_top_right">
-                            <div class = "btn-group">
-                                <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="background: #353535; color: white; border-radius: 6px;">
-                                    User
+                            <form action="{{route('search')}}" method="get">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                                <input style="background-color: #eee; font-size: 15px; border-color: transparent; border-radius: 2em; padding-left: 1em;" type="text" name="search" placeholder="Search">
+                                <button class = "btn" style=" border-radius: 6px;">
+                                    <i class="fa fa-search"></i>
                                 </button>
-                                <ul class = "dropdown-menu" role = "menu">
-                                    <li><a href = "/login">Login</a></li>
-                                    <li><a href = "/register">Register</a></li>
+                                <div class = "btn-group">
+                                    <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style=" border-radius: 6px;">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                    <ul class = "dropdown-menu " role = "menu">
+                                        <!-- Authentication Links -->
+                                        @guest
+                                        <li class="">
+                                            <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        </li>
+                                        @if (Route::has('register'))
+                                        <li class="">
+                                            <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                        @endif
+                                        @else
+                                        {{ Auth::user()->name }} 
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                    @endguest
                                 </ul>
                             </div>
-                        </div>
-                    </ul>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -32,7 +60,7 @@
         <section id="navArea">
             <nav class="" role="navigation">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span><i class="fa fa-arrow" ></i></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav main_nav">
@@ -40,7 +68,7 @@
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 @foreach($category as $row)
-                                <li><a href="#">{{ $row->name }}</a></li>
+                                <li><a href="{{route('newshome.category',$row->name )}}">{{ $row->name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

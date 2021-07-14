@@ -1,86 +1,90 @@
 @extends('layouts.master')
 
 @section('title')
-  Manage Posts
+Manage Posts
 @endsection
 
 @section('content')
-  <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Manage Posts</h4>
-                    @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                    @endif
-              </div>
-              <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Author
-                            </th>
-                            <th>
-                                Title
-                            </th>
-                            <th>
-                                Category
-                            </th>
-                            <th>
-                                Content
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Submit
-                            </th>
-                            </thead>
-                            <tbody>
-                            @foreach ($posts as $row)
-                                <tr>
-                                    <td>
-                                      {{ $row->id }}
-                                    </td>
-                                    <td>
-                                      {{ $row->user->name }}
-                                    </td>
-                                    <td>
-                                      {{ $row->title }}
-                                    </td>
-                                    <td>
-                                      {{ $row->category->name }}
-                                    </td>
-                                    <td>
-                                      {{ substr($row->content,0,20) }}
-                                    </td>
-                                    <td>
-                                        <br>
-                                        @if ( ($row->status) == 'approve' )
-                                            <a class="btn btn-success rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
-                                        @elseif ( ($row->status) == 'decline' )
-                                            <a class="btn btn-danger rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
-                                        @else
-                                            <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
-                                        @endif
-                                        <form action="{{ route('manage.postStatus',$row->id) }}" method="post">
-                                            {{ csrf_field() }}
-                                            {{ method_field('PUT') }}
-                                            <br><select class="form-control-sm rounded border-0" name="status">
-                                                <option value="approve">Approve</option>
-                                                <option value="decline">Decline</option>
-                                            </select>
-                                            <td>
-                                                
-                                            <br><button class="btn btn-info" type="submit"><i class="fas fa-check-circle"></i></button><br><br>
-                                        </form>
-                                    </td>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Manage Posts</h4>
+        @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+        @endif
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Content
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        
+                    </th>
+                    <th>
+                        Submit
+                    </th>
+                </thead>
+                <tbody>
+                    @foreach ($posts as $row)
+                    <tr>
+                        <td>
+                          {{ $row->id }}
+                      </td>
+                      <td>
+                          {{ $row->user->name }}
+                      </td>
+                      <td>
+                          {{ $row->title }}
+                      </td>
+                      <td>
+                          {{ $row->category->name }}
+                      </td>
+                      <td>
+                          {{ substr($row->content,0,20) }}
+                      </td>
+                      <td>
+                        <br>
+                        @if ( ($row->status) == 'approve' )
+                        <a class="btn btn-success rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
+                        @elseif ( ($row->status) == 'decline' )
+                        <a class="btn btn-danger rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
+                        @else
+                        <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
+                        @endif
+                        <form action="{{ route('manage.postStatus',$row->id) }}" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
+                            <br><select class="form-control-sm rounded border-0" name="status">
+                                <option value="pending">Pending</option>
+                                <option value="approve">Approve</option>
+                                <option value="decline">Decline</option>
+                            </select>
+                            <td>
+                                
+                                <br><button class="btn btn-info" type="submit"><i class="fas fa-check-circle"></i></button><br><br>
+                            </form>
+                        </td>
                                     {{-- <td>
                                         <a href="{{ route('edit.post',$row->id) }}" class="btn btn-sm  btn-success rounded"><i class="fas fa-pencil-alt"></i></a>
                                     </td>
@@ -116,13 +120,13 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-@endsection
+            @endsection
 
-@section('scripts')
-@endsection
+            @section('scripts')
+            @endsection

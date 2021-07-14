@@ -12,11 +12,11 @@
     </div>
     <div class="news">
       <marquee class="news-content" scrolldelay="150">
-        @foreach($hotPost as $p)
+        @foreach($breakingNews as $b)
         <li style="display:inline-block;">
           <div class="media">
             <div class="media-body" style="padding-right: 3em;">
-              <a href="{{route('newshome.showPost',$p->title)}}" style="color: whitesmoke;">{{$p->title}}</a> 
+              <a href="{{route('newshome.showPost',$b->title)}}" style="color: whitesmoke;">{{$b->title}}</a> 
             </div>
           </div>
         </li>
@@ -222,15 +222,6 @@
           <a class="sideAdd" href="#"><img src="images/add_img.jpg" alt=""></a>
           <a class="sideAdd" href="#"><img src="images/add_img.jpg" alt=""></a> 
           <a class="sideAdd" href="#"><img src="images/add_img.jpg" alt=""></a> 
-        </div>
-        <div class="single_sidebar wow fadeInDown">
-          <h2><span>Links</span></h2>
-          <ul>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Rss Feed</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Life &amp; Style</a></li>
-          </ul>
         </div>
       </aside>
     </div>

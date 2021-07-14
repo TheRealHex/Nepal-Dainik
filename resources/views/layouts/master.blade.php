@@ -23,7 +23,7 @@
 <body class="">
   <div class="wrapper">
     <div class="sidebar" data-color="blue" style="font-size: 18px;">
-        <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow" -->
+      <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow" -->
       <div class="logo simple-text logo-normal">
         <a class="simple-text logo-normal text-align-center font-weight-bold">
           Admin Panel
@@ -43,24 +43,38 @@
               <p>User Management</p>
             </a>
           </li>
-          <li class="{{'manage-posts' == request()->path()? 'active' : ''}}">
-            <a href="{{ route('getPosts') }}">
-              <i class="now-ui-icons files_single-copy-04"></i>
-              <p>Manage Posts</p>
-            </a>
-          </li>
-          <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
-            <a href="./pending-posts">
-              <i class="now-ui-icons sport_user-run"></i>
-              <p>Pending Posts</p>
-            </a>
-          </li>
           <li class="{{'categories' == request()->path()? 'active' : ''}}">
             <a href="./categories">
               <i class="now-ui-icons media-2_sound-wave"></i>
               <p>Categories</p>
             </a>
           </li>
+          <div class="dropdown btn btn-info btn-sm font-weight-bold" style=" width: 80%;">
+            <a class=" " data-toggle="dropdown" id="navbarDropdownMenuLink1">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Manage Posts</p>
+            </a>
+            <ul class="dropdown-menu m-4" style="  width: 100%; text-align: center; background-color: transparent;" aria-labelledby="navbarDropdownMenuLink1">
+              <li class="{{'manage-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('approvedPosts') }}">
+                  <i class="now-ui-icons files_single-copy-04"></i>
+                  <p>Approved Posts</p>
+                </a>
+              </li>
+              <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('pendingPosts') }}">
+                  <i class="now-ui-icons sport_user-run"></i>
+                  <p>Pending Posts</p>
+                </a>
+              </li>
+              <li class="{{'declined-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('declinedPosts') }}">
+                  <i class="now-ui-icons design_scissors"></i>
+                  <p>Declined Posts</p>
+                </a>
+              </li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
@@ -105,22 +119,22 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </div>
+            </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons location_world"></i>

@@ -57,6 +57,6 @@
 <script src="{{ asset('js/jquery.newsTicker.min.js') }}"></script>
 <script src="{{ asset('js/jquery.fancybox.pack.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
-@yield('scripts');
+@yield('scripts')
 </body>
 </html>

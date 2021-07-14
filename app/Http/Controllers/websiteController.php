@@ -12,23 +12,17 @@ class websiteController extends Controller
     {
         $this->middleware('web');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $category=Category::get();
+        $breakingNews = Post::where('status','=','approve')->where('breaking','=','on')->get();
         $hotPost = Post::where('status','=','approve')->get();
         $natPost = Post::where('status','=','approve')->where('cat_id','=',1)->limit(4)->get();
-        $post = Post::where('status','=','approve')->latest()->limit(3)->get();
-        return view('newshome.index',compact('post','category','hotPost','natPost'));
+        $post = Post::where('status','=','approve')->latest()->limit(5)->get();
+        return view('newshome.index',compact('post','category','breakingNews','natPost'));
     }
     public function showPost($title)
     {
-        // dd($title);
         $post = Post::where('title','=',$title)->first();
         $allPost = Post::where('title','!=',$title)->limit(6)->get();
         $category=Category::get();
@@ -40,6 +34,14 @@ class websiteController extends Controller
         $category=Category::get();
         return view('newshome.contact',compact('category'));
     }
+
+    public function catPost($name)
+    {
+        $id = Category::where('name','=',$name)->first();
+        $cat = Post::where('cat_id','=',$id->id)->get();
+        return view('newshome.category', compact('cat'));
+    }
+
     public function sponsor()
     {
         $category=Category::get();

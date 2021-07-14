@@ -50,8 +50,8 @@
         </a> </nav>--}}
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
-          <div class="single_sidebar">
-            <h2><span>Popular Post</span></h2>
+          <div class="single_sidebar" style="margin-top: 5em;">
+              <h2><span>Popular Post</span></h2>
             <ul class="spost_nav">
               <li>
                 <div class="media wow fadeInDown"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img1.jpg"> </a>
@@ -77,7 +77,7 @@
           </div>
           <div class="single_sidebar">
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Tags</a>
+              <li role="presentation"><a href="#" aria-controls="profile" role="tab">Tags</a>
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="category">
@@ -92,9 +92,6 @@
                 </ul>
               </div>
               <div role="tabpanel" class="tab-pane" id="video">
-                <div class="vide_area">
-                  <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-                </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="comments">
                 <ul class="spost_nav">

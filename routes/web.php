@@ -22,8 +22,14 @@ Auth::routes();
 Route::get('/', 'websiteController@index')->name('newshome.index');
 Route::get('/post/{title}', 'websiteController@showPost')->name('newshome.showPost');
 Route::get('/contact', 'websiteController@contact')->name('newshome.contact');
+
+Route::get('/category/{name}', 'websiteController@catPost')->name('newshome.category');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/sponsor','websiteController@sponsor')->name('sponsor');
+
+Route::get("/search",'SearchController@index')->name('search');
+
 
 // Admin
 Route::group(['middleware' => ['auth','isAdmin']], function (){
@@ -32,8 +38,12 @@ Route::group(['middleware' => ['auth','isAdmin']], function (){
     Route::put('/user/role-update/{id}','Admin\UsersController@roleupdate')->name('userRoleUpdate');
     Route::delete('/user/{id}','Admin\UsersController@userdelete')->name('userDelete');
 
-    Route::get('/manage-posts','Admin\PostController@adminIndex')->name('getPosts');
+
+    Route::get('/pending-posts','Admin\PostController@pending')->name('pendingPosts');
+    Route::get('/manage-posts','Admin\PostController@approved')->name('approvedPosts');
+    Route::get('/declined-posts','Admin\PostController@declined')->name('declinedPosts');
     Route::put('/manage-posts/status/{id}','Admin\PostController@status')->name('manage.postStatus');
+
 
     Route::get('/categories','Admin\CategoryController@index')->name('categories.index');
     Route::get('/categories-create','Admin\CategoryController@create')->name('categories.create');
@@ -58,6 +68,9 @@ Route::group(['middleware' => ['auth','isWriter']], function (){
     Route::get('/post','Admin\PostController@writerIndex')->name('post.index');
     Route::get('/create-post','Admin\PostController@create')->name('create.post');
     Route::get('/post-mgmt','Admin\PostController@writerIndex')->name('manage.post');
+    
+    Route::get('/preferences','Admin\PostController@writerPref')->name('writer.settings');
+
     Route::post('/post','Admin\PostController@store')->name('store.post');
     Route::get('/edit-post/{id}','Admin\PostController@edit')->name('edit.post');
     Route::put('/edit-post/{id}','Admin\PostController@update')->name('update.post');
