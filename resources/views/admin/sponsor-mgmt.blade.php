@@ -1,7 +1,7 @@
-@extends('layouts.editor-master')
+@extends('layouts.master')
 
 @section('title')
-Manage Posts
+    Manage sponsor
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@ Manage Posts
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Manage Posts</h4>
+        <h4 class="card-title">Manage Sponsor</h4>
         @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -24,41 +24,44 @@ Manage Posts
                         ID
                     </th>
                     <th>
-                        Author
+                        Company
                     </th>
                     <th>
-                        Title
+                        Website
                     </th>
                     <th>
-                        Category
+                        Phone
                     </th>
                     <th>
-                        Content
+                        Email
                     </th>
                     <th>
                         Status
+                    </th>
+                    <th>
+                        
                     </th>
                     <th>
                         Submit
                     </th>
                 </thead>
                 <tbody>
-                    @foreach ($posts as $row)
+                    @foreach ($sponsor as $row)
                     <tr>
                         <td>
                           {{ $row->id }}
                       </td>
                       <td>
-                          {{ $row->user->name }}
+                          {{ $row->company }}
                       </td>
                       <td>
-                          {{ $row->title }}
+                          {{ $row->website }}
                       </td>
                       <td>
-                          {{ $row->category->name }}
+                          {{ $row->phone }}
                       </td>
                       <td>
-                          {{ substr($row->content,0,20) }}
+                          {{ $row->email }}
                       </td>
                       <td>
                         <br>
@@ -69,13 +72,13 @@ Manage Posts
                         @else
                         <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                         @endif
-                        <form action="{{ route('manage.postStatus',$row->id) }}" method="post">
+                        <form action="{{ route('manage.sponsorStatus',$row->id) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                             <br><select class="form-control-sm rounded border-0" name="status">
                                 <option value="pending">Pending</option>
-                                <option value="approve">Approve</option>
-                                <option value="decline">Decline</option>
+                                <option value="approved">Approve</option>
+                                <option value="declined">Decline</option>
                             </select>
                             <td>
                                 
@@ -125,5 +128,6 @@ Manage Posts
             </div>
             @endsection
 
-            @section('scripts')
-            @endsection
+@section('scripts')
+
+@endsection

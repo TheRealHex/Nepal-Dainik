@@ -44,7 +44,8 @@ class PostController extends Controller
   public function writerIndex()
   {
     $posts=Post::with('category')->where('user_id','=',Auth()->id())->get();
-    return view('writer.post-mgmt',compact('posts'));
+    $postcount=$posts->count();
+    return view('writer.post-mgmt',compact('posts','postcount'));
   }
 
   public function create()
@@ -61,79 +62,87 @@ class PostController extends Controller
       'image.*' => 'image mimes:jpeg, png, jpg,gif, svg|max:2048*',
       'content' => 'required'
     ]);
-    if($request->hasfile('image'))
-    {
-      $image=$request->file('image');
-      $name=$image->getClientOriginalName();
-            $image->move(public_path().'/image/', $name); // your folder path
-            $name;
-          }
-          $post = new Post();
-          $post->title = $request->input('title');
-          $post->image = $name;
-          $post->content = $request->input('content');
-          $post->cat_id = $request->input('cat_id');
-          $post->user_id = Auth()->id();
-          $post->tag = $request->input('tags');
-          $post->breaking = $request->input('breaking');
-          $post->save();
-          return redirect()->route('post.index')->with('status','Post added on pending.');
+    if ($files = $request->file('image')) {
+       // Define upload path
+           $destinationPath = public_path('/image/'); // upload path
+ // Upload Orginal Image           
+           $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+           $files->move($destinationPath, $profileImage);
+           $fileNameToStore = $profileImage;
+         }else{
+          $fileNameToStore='';
         }
-
-
-        public function edit($id)
-        {
-          $post = Post::find($id);
-          $category=Category::get();
-          return view('post.edit',compact('post','category'));
-
-        }
-
-        public function update(Request $request, $id)
-        {
-          $this->validate($request, [
-            'title' => 'required',
-            'image.*' => 'image mimes:jpeg, png, jpg,gif, svg|max:2048*',
-            'content' => 'required'
-          ]);
-          $post = Post::find($id);
-          if($request->hasfile('image'))
-          {
-            $image=$request->file('image');
-            $name=$image->getClientOriginalName();
-            $image->move(public_path().'/image/', $name);
-
-            $image_path = public_path().'/image/'.$post->image;
-            if(File::exists($image_path)) {
-              File::delete($image_path);
-            }
-
-            $name;
-          }
-          $post->image = $name;
-          $post->title = $request->input('title');
-          $post->content = $request->input('content');
-          $post->cat_id = $request->input('cat_id');
-          $post->user_id = Auth()->id();
-          $post->update();
-          return redirect()->route('post.index')->with('status','Post Updated.');
-        }
-
-        public function destroy($id)
-        {
-          $post = Post::find($id);
-          $image_path = public_path().'/image/'.$post->image;
-          if(File::exists($image_path)) {
-            File::delete($image_path);
-          }
-          $post->delete();
-          return redirect()->route('post.index')->with('status','Post Deleted.');
-        }
-        public function status(Request $request, $id)
-        {
-          $post = Post::find($id);
-          $post->status = $request->input('status');
-          $post->update();
-          return redirect()->route('pendingPosts')->with('status','Task completed successfully.');
-        }
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->image = $fileNameToStore;
+        $post->content = $request->input('content');
+        $post->cat_id = $request->input('cat_id');
+        $post->user_id = Auth()->id();
+        $post->tag = $request->input('tags');
+        $post->breaking = $request->input('breaking');
+        $post->postdate = $request->input('postDate');
+        $post->save();
+        return redirect()->route('post.index')->with('status','Post added on pending.');
       }
+
+
+      public function edit($id)
+      {
+        $post = Post::find($id);
+        $category=Category::get();
+        return view('post.edit',compact('post','category'));
+
+      }
+
+      public function update(Request $request, $id)
+      {
+
+        $this->validate($request, [
+          'title' => 'required',
+          'image.*' => 'image mimes:jpeg, png, jpg,gif, svg|max:2048*',
+          'content' => 'required'
+        ]);
+        $post = Post::find($id);
+        if ($files = $request->file('image')) {
+       // Define upload path
+           $destinationPath = public_path('/image/'); // upload path
+      // Upload Orginal Image           
+           $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+           $files->move($destinationPath, $profileImage);
+           if(File::exists($destinationPath)) {
+            File::delete($destinationPath);
+          }
+          $fileNameToStore = $profileImage;
+        }else{
+          $fileNameToStore=$post->image;
+        }
+        $post->image = $fileNameToStore;
+        $post->title = $request->input('title');
+        $post->user_id = Auth()->id();
+        $post->content = $request->input('content');
+        $post->cat_id = $request->input('cat_id');
+        $post->breaking = $request->input('breaking');
+        $post->tag = $request->input('tags');
+        $post->postdate = $request->input('postDate');
+        $post->update();
+        return redirect()->route('post.index')->with('status','Post Updated.');
+      }
+
+      public function destroy($id)
+      {
+        $post = Post::find($id);
+        $image_path = public_path().'/image/'.$post->image;
+        if(File::exists($image_path)) {
+          File::delete($image_path);
+        }
+        $post->delete();
+        return redirect()->route('post.index')->with('status','Post Deleted.');
+      }
+      public function status(Request $request, $id)
+      {
+        $post = Post::find($id);
+        $post->status = $request->input('status');
+        $post->update();
+        return redirect()->route('pendingPosts')->with('status','Task completed successfully.');
+      }
+    }

@@ -1,4 +1,4 @@
-@extends('layouts.writer-master')
+@extends('layouts.master')
 
 @section('title')
 Create a new post
@@ -11,12 +11,12 @@ Create a new post
             <div class="card">
                 <div class="card-header">
                     <h4 class="p-1">New Post</h4>
-                    <div class="card-body col">
+                    <div class="card-body  offset-md-1">
                         <form action="{{route('store.post')}}" method="POST" class="font-weight-bold" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <div class="form-group row m-4">
-                                <input type="text" class="form-control col" placeholder="Title" name="title">
-                                <input type="text" class="form-control col" placeholder="Meta tag for search" name="tags">
+                            <div class="form-group col-md-6  m-4">
+                                <input type="text" class="form-control col" placeholder="Title" name="title"><br>
+                                <input type="text" class="form-control col" placeholder="Meta data for search" name="tags">
                             </div>
                             <div class="ml-5">
                                 <img id="uploadPreview" width="100" height="100" accept="image/png, .jpeg, image/jpg"/>
@@ -33,7 +33,7 @@ Create a new post
                                 </script>
                             </div>
                             <div class="ml-5 mt-5">
-                             <select class="form-control-sm rounded border-0" name="cat_id">
+                               <select class="form-control  " style="width: 70%; border-color: lightcoral;" name="cat_id">
                                 <option disabled>Select Category</option>
                                 @foreach($category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -41,16 +41,20 @@ Create a new post
                             </select>
                         </div>
                         <div>
-                            <i class="fas fa-pencil-alt float-right"></i>
-                            <textarea  class="m-4 rounded" placeholder="Content" style="height: 70vh; width: 95%;" name="content"></textarea>
+                            <textarea  class="m-4 rounded" placeholder="Content" style="height:60vh; width: 80%" name="content"></textarea>
                         </div>
                         <div class="tags ml-5">
                             <label for="breaking">
                                 <input type="checkbox" name="breaking" id="breaking"> Breaking News
-                            </label>
+                            </label><br><br>
+                            <label for="date"></label>Post date <br>
+                            <input class="form-control" style="width:70%;" type="date" name="postDate">
                         </div>
-                        <a class="btn btn-danger float-right font-weight-bold p-3 ml-3 shadow text-light">Cancel</a>
-                        <button type="submit" class="btn btn-success float-right font-weight-bold p-3 shadow">Post</button>
+                        <br>
+                        <div class="card-footer float-right" style="margin-right: 3em;">
+                            <button type="submit" class="btn btn-success  font-weight-bold p-3 shadow">Post</button>
+                            <a class="btn btn-danger font-weight-bold p-3 ml-3 shadow text-light">Cancel</a>
+                        </div>
                     </form>
                 </div>
             </div>

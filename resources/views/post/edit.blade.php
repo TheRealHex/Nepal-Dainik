@@ -1,4 +1,4 @@
-@extends('layouts.writer-master')
+@extends('layouts.master')
 
 @section('title')
 Edit Post
@@ -18,6 +18,8 @@ Edit Post
                             <div class="form-group row m-4">
                                 <label class="col-form-label">Title&nbsp;&nbsp;&nbsp;</label>
                                 <input type="text" class="form-control col" name="title" value="{{$post->title}}">
+                                <input type="text" class="form-control col"  value="{{$post->tag}}" placeholder="Meta data for search" name="tags">
+
                             </div>
                             <div class="ml-5">
                                 <img id="uploadPreview" width="100" height="100" accept="image/png, .jpeg, image/jpg" src="{{asset('image/'.$post->image)}}" />
@@ -36,30 +38,33 @@ Edit Post
                             <div class="form-group row m-4">
                                 <label class="col-form-label">Category&nbsp;&nbsp;&nbsp;</label>
                                 <div class=" ml-5 mt-5">
-                                    <select name="cat_id">
-                                        @foreach($category as $cat)
-                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                   <select class="form-control" border-color: lightcoral;" name="cat_id">
+                                    @foreach($category as $cat)
+                                    <option value="{{$cat->id}}" @if($post->cat_id == $cat->id) ? selected @endif>{{$cat->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="form-group row m-4">
-                                <label class="col-form-label">Content&nbsp;&nbsp;&nbsp;</label>
-                                <textarea  class="m-4 rounded" placeholder="Content" style="height: 70vh; width: 95%;" name="content">{{$post->content}}</textarea>
-                            </div>
-                            <div class="tags ml-5">
-                                <label for="breaking">
-                                    <input type="checkbox" name="breaking" id="breaking"> Breaking News
-                                </label>
-                            </div>
-                            <a class="btn btn-danger float-right font-weight-bold p-3 ml-3 shadow text-light" href="{{ route('post.index') }}">Cancel</a>
-                            <button type="submit" class="btn btn-success float-right font-weight-bold p-3 shadow">Update</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group row m-4">
+                            <label class="col-form-label">Content&nbsp;&nbsp;&nbsp;</label>
+                            <textarea  class="m-4 rounded" placeholder="Content" style="height: 70vh; width: 95%;" name="content">{{$post->content}}</textarea>
+                        </div>
+                        <div class="tags ml-5">
+                            <label for="breaking">
+                                <input type="checkbox" name="breaking" id="breaking" @if($post->breaking == 'on') ? checked @endif> Breaking News
+                            </label>
+                            <br><br>
+                            <label for="date"></label>Post date <br>
+                            <input class="form-control" style="width:70%;" type="date" name="postDate" value="{{$post->postdate}}">
+                        </div>
+                        <a class="btn btn-danger float-right font-weight-bold p-3 ml-3 shadow text-light" href="{{ route('post.index') }}">Cancel</a>
+                        <button type="submit" class="btn btn-success float-right font-weight-bold p-3 shadow">Update</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
 

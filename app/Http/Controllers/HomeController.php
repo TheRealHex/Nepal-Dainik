@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+use Carbon\Carbon;
 use App\User;
 
 class HomeController extends Controller
@@ -25,23 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role_id == 3)
-        {
+            $todayPost = Post::whereDate('postdate', Carbon::today())->count();
             $editor = User::where('role_id','=','2')->count();
             $writer = User::where('role_id','=','1')->count();
-            return view('admin.dashboard',compact('writer','editor'));
-        }
-        elseif(Auth::user()->role_id == 2)
-        {
-            return view('editor.dashboard');
-        }
-        elseif(Auth::user()->role_id == 1)
-        {
-            return view('writer.dashboard');
-        }
-        else
-        {
-            return view('home');
-        }
+            return view('admin.dashboard', compact('writer','editor','todayPost'));
     }
 }

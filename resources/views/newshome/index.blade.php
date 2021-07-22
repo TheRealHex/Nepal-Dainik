@@ -8,7 +8,7 @@
 <section id="sliderSection">
   <div class="ticker">
     <div class="title">
-      <h5>Breaking News</h5>
+      <p>Breaking News</p>
     </div>
     <div class="news marquee">
       @foreach($breakingNews as $b)
@@ -217,21 +217,23 @@
         </div>
         <div class="single_sidebar wow fadeInDown">
           <h2><span>Sponsor</span></h2>
-          <a class="sideAdd" href="#"><img src="images/add_img.jpg" alt=""></a>
-          <a class="sideAdd" href="#"><img src="images/add_img.jpg" alt=""></a> 
-          <a class="sideAdd" href="#"><img src="images/add_img.jpg" alt=""></a> 
+          @foreach($sponsorNormal as $s)
+          <a class="sideAdd" href="{{$s->website}}" target="_blank">
+            <img style="border: 2px solid #606060; border-radius: 1em;" src="{{asset('/ads/'.$s->image)}}" alt="">
+          </a>
+          @endforeach
         </div>
       </aside>
     </div>
   </div>
   <br><br>
   <div class="banner_ads">
-    
-    <marquee behavior="scroll" direction="left">
-      @foreach ($breakingNews as $b)
+    <marquee behavior="scroll" direction="left" Scrolldelay=100>
+      @foreach ($sponsorBanner as $s)
       <li style="display:inline-block">
-        <a href="#"></a>
-        <img src="/image/CG.gif" alt="">
+        <a href="{{$s->website}}" target="_blank">
+        <img src="{{asset('/ads/'.$s->image)}}" height="85px" alt="add_banner">
+        </a>
       </li>
       @endforeach
     </marquee>

@@ -29,7 +29,7 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="{{'dashboard' == request()->path()? 'active' : ''}}">
-            <a href="/dashboard">
+            <a href="{{route('home')}}">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
@@ -44,12 +44,6 @@
             <a href="/post-mgmt">
               <i class="now-ui-icons location_map-big"></i>
               <p>Your Posts</p>
-            </a>
-          </li>
-          <li class="{{'user-mgmt' == request()->path()? 'active' : ''}}">
-            <a href="#">
-              <i class="fa fa-user-circle"></i>
-              <p>Settings</p>
             </a>
           </li>
         </ul>

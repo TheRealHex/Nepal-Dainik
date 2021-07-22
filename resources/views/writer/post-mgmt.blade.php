@@ -1,4 +1,4 @@
-@extends('layouts.writer-master')
+@extends('layouts.master')
 
 @section('title')
 Manage Posts

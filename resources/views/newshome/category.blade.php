@@ -3,9 +3,10 @@
 <section id="contentSection" style="padding: 0 100px;">
   <div class="row">
     {{-- @foreach($category as $c) --}}
-    <div class="title" style="background-color: lightcoral; border-radius: 2em; color: white;">
-      <h3>Title</h3>
+    <div class="title" style="background-color: lightcoral; border-radius: 1em; color: white;">
+      <h4>{{$title}}</h4>
     </div>
+    <br>
     {{-- @endforeach --}}
     <div class="col-md-12 ml-3">
       <div class="contact_area">

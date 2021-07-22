@@ -14,7 +14,7 @@ class AddTagToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('tag')->default('null')->after('status');
+            $table->string('tag')->nullable()->after('status');
             $table->string('breaking')->nullable()->after('tag');
             $table->date('postdate')->nullable()->after('breaking');
         });

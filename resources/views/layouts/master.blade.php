@@ -26,7 +26,8 @@
       <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow" -->
       <div class="logo simple-text logo-normal">
         <a class="simple-text logo-normal text-align-center font-weight-bold">
-          Admin Panel
+          {{Auth::user()->role->type}}
+          Panel
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -37,6 +38,21 @@
               <p>Dashboard</p>
             </a>
           </li >
+          @if (Auth::user()->role->type == 'writer')
+          <li class="{{'create-post' == request()->path()? 'active' : ''}}">
+            <a href="/create-post">
+              <i class="now-ui-icons education_atom"></i>
+              <p>Create Post</p>
+            </a>
+          </li>
+          <li class="{{'post-mgmt' == request()->path()? 'active' : ''}}">
+            <a href="/post-mgmt">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Your Posts</p>
+            </a>
+          </li>
+          @endif
+          @if (Auth::user()->role->type == 'admin')
           <li class="{{'users' == request()->path()? 'active' : ''}}">
             <a href="{{ route('getUsers') }}">
               <i class="now-ui-icons users_single-02"></i>
@@ -49,6 +65,34 @@
               <p>Categories</p>
             </a>
           </li>
+          <div class="dropdown btn btn-info btn-sm font-weight-bold" style=" width: 80%;">
+            <a class=" " data-toggle="dropdown" id="navbarDropdownMenuLink1">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Manage Sponsors</p>
+            </a>
+            <ul class="dropdown-menu m-4" style="  width: 100%; text-align: center; background-color: #333; border-radius: 2em;" aria-labelledby="navbarDropdownMenuLink1">
+              <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('pending.sponsor') }}">
+                  <i class="now-ui-icons sport_user-run"></i>
+                  <p>Pending Ads</p>
+                </a>
+              </li>
+              <li class="{{'manage-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('approved.sponsor') }}">
+                  <i class="now-ui-icons files_single-copy-04"></i>
+                  <p>Approved Ads</p>
+                </a>
+              </li>
+              <li class="{{'declined-posts' == request()->path()? 'active' : ''}}">
+                <a href="{{ route('declined.sponsor') }}">
+                  <i class="now-ui-icons design_scissors"></i>
+                  <p>Declined Ads</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          @endif
+          @if (Auth::user()->role->type == 'admin' || Auth::user()->role->type == 'editor')
           <div class="dropdown btn btn-info btn-sm font-weight-bold" style=" width: 80%;">
             <a class=" " data-toggle="dropdown" id="navbarDropdownMenuLink1">
               <i class="now-ui-icons education_paper"></i>
@@ -75,32 +119,7 @@
               </li>
             </ul>
           </div>
-          <div class="dropdown btn btn-info btn-sm font-weight-bold" style=" width: 80%;">
-            <a class=" " data-toggle="dropdown" id="navbarDropdownMenuLink1">
-              <i class="now-ui-icons education_paper"></i>
-              <p>Manage Sponsors</p>
-            </a>
-            <ul class="dropdown-menu m-4" style="  width: 100%; text-align: center; background-color: #333; border-radius: 2em;" aria-labelledby="navbarDropdownMenuLink1">
-              <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
-                <a href="{{ route('pendingPosts') }}">
-                  <i class="now-ui-icons sport_user-run"></i>
-                  <p>Pending Ads</p>
-                </a>
-              </li>
-              <li class="{{'manage-posts' == request()->path()? 'active' : ''}}">
-                <a href="{{ route('approvedPosts') }}">
-                  <i class="now-ui-icons files_single-copy-04"></i>
-                  <p>Approved Ads</p>
-                </a>
-              </li>
-              <li class="{{'declined-posts' == request()->path()? 'active' : ''}}">
-                <a href="{{ route('declinedPosts') }}">
-                  <i class="now-ui-icons design_scissors"></i>
-                  <p>Declined Ads</p>
-                </a>
-              </li>
-            </ul>
-          </div>
+          @endif
           <li class="{{'user-mgmt' == request()->path()? 'active' : ''}}">
             <a href="#">
               <i class="fa fa-user-circle"></i>

@@ -63,15 +63,16 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span><i class="fa fa-arrow" ></i></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
+                    <br>
                     <ul class="nav navbar-nav main_nav">
                         <li class="active"><a href="/">Home</a></li>
-                        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
+                        {{-- <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <span class="caret"></span></a> --}}
+                            {{-- <ul class="dropdown-menu" role="menu"> --}}
                                 @foreach($category as $row)
                                 <li><a href="{{route('newshome.category',$row->name )}}">{{ $row->name }}</a></li>
                                 @endforeach
-                            </ul>
-                        </li>
+                        <li><a href="https://covid19.mohp.gov.np/" target="_blank">Covid 19</a></li>
+                        <li><a href="#">About</a></li>
                         <li><a href="{{route('newshome.contact')}}">Contact</a></li>
                     </ul>
                 </div>

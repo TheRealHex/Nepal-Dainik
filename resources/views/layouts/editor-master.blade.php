@@ -33,13 +33,13 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="{{'home' == request()->path()? 'active' : ''}}">
-            <a href="./home">
+            <a href="{{route('home')}}">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li >
           <li class="{{'pending-posts' == request()->path()? 'active' : ''}}">
-            <a href="./pending-posts">
+            <a href="{{route('pendingPosts')}}">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Pending Posts</p>
             </a>
@@ -54,12 +54,6 @@
             <a href="{{ route('getUsers') }}">
               <i class="now-ui-icons users_single-02"></i>
               <p>Writers</p>
-            </a>
-          </li>
-          <li class="{{'user-mgmt' == request()->path()? 'active' : ''}}">
-            <a href="#">
-              <i class="fa fa-user-circle"></i>
-              <p>Settings</p>
             </a>
           </li>
         </ul>
