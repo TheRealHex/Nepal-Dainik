@@ -18,26 +18,29 @@
 Auth::routes();
 
 // NewsHome
-// Route::view('/index','newshome.index');
+
 Route::get('/', 'websiteController@index')->name('newshome.index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/category/{name}', 'websiteController@catPost')->name('newshome.category');
 Route::get('/post/{title}', 'websiteController@showPost')->name('newshome.showPost');
 Route::get('/contact', 'websiteController@contact')->name('newshome.contact');
-
-Route::get('/category/{name}', 'websiteController@catPost')->name('newshome.category');
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get("/search",'SearchController@index')->name('search');
 Route::get('/sponsor','websiteController@sponsor')->name('sponsor');
 Route::post('/sponsor','websiteController@sponsorStore')->name('sponsorStore');
 
+Route::get('/profile','Admin\UsersController@profile')->name('user.profile');
+Route::put('/profile/{id}','Admin\UsersController@profileUpdate')->name('profile.update');
 
-Route::get("/search",'SearchController@index')->name('search');
+Route::get('/password','Admin\UsersController@passwordForm')->name('password.form');
+Route::post('/password','Admin\UsersController@password')->name('password.update');
+
+
 
 Route::group(['middleware' => ['auth']], function (){
     Route::get('/pending-posts','Admin\PostController@pending')->name('pendingPosts');
     Route::get('/approve-posts','Admin\PostController@approved')->name('approvedPosts');
     Route::get('/declined-posts','Admin\PostController@declined')->name('declinedPosts');
     Route::put('/manage-posts/status/{id}','Admin\PostController@status')->name('manage.postStatus');
-
     Route::get('/post','Admin\PostController@writerIndex')->name('post.index');
     Route::get('/create-post','Admin\PostController@create')->name('create.post');
     Route::get('/post-mgmt','Admin\PostController@writerIndex')->name('manage.post');
@@ -54,12 +57,10 @@ Route::group(['middleware' => ['auth','isAdmin']], function (){
     Route::get('/user/edit/{id}','Admin\UsersController@userEdit')->name('userEdit');
     Route::put('/user/role-update/{id}','Admin\UsersController@roleupdate')->name('userRoleUpdate');
     Route::delete('/user/{id}','Admin\UsersController@userdelete')->name('userDelete');
-
     Route::get('/sponsor-mgmt/pending','Admin\SponsorController@index')->name('pending.sponsor');
     Route::get('/sponsor-mgmt/approved','Admin\SponsorController@approved')->name('approved.sponsor');
     Route::get('/sponsor-mgmt/declined','Admin\SponsorController@declined')->name('declined.sponsor');
     Route::put('/sponsor-mgmt/status/{id}','Admin\SponsorController@status')->name('manage.sponsorStatus');
-
     Route::get('/categories','Admin\CategoryController@index')->name('categories.index');
     Route::get('/categories-create','Admin\CategoryController@create')->name('categories.create');
     Route::post('/categories','Admin\CategoryController@store')->name('categories.store');

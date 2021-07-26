@@ -27,7 +27,7 @@
                     <h2>Contact</h2>
                     <ul class="tag_nav">
                         <li>
-                            <a href="#">Letters to the Editor</a>
+                            <a href="#">Leave us a message</a>
                         </li>
                         <li>
                             <a href="{{route('sponsor')}}">Advertise in the Post</a>
@@ -48,7 +48,6 @@
         <a href="#" class="scrollup" title="Goto Top" data-placement="top"></a>
     </div>
 </footer>
-
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/wow.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -57,7 +56,6 @@
 <script src="{{ asset('js/jquery.newsTicker.min.js') }}"></script>
 <script src="{{ asset('js/jquery.fancybox.pack.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
-
 @yield('scripts')
 </body>
 </html>

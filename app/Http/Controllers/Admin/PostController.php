@@ -119,6 +119,7 @@ class PostController extends Controller
         $post->image = $fileNameToStore;
         $post->title = $request->input('title');
         $post->user_id = Auth()->id();
+        $post->status = 'pending';
         $post->content = $request->input('content');
         $post->cat_id = $request->input('cat_id');
         $post->breaking = $request->input('breaking');
@@ -142,7 +143,8 @@ class PostController extends Controller
       {
         $post = Post::find($id);
         $post->status = $request->input('status');
+        $post->remarks = $request->input('remarks');
         $post->update();
-        return redirect()->route('pendingPosts')->with('status','Task completed successfully.');
+        return redirect()->back()->with('status','Task completed successfully.');
       }
     }

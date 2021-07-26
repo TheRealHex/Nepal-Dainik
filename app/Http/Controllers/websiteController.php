@@ -15,11 +15,10 @@ class websiteController extends Controller
     }
     public function index()
     {
-        $sponsorNormal=Sponsor::where('imageType','=','normal')->limit(3)->get();
-        $sponsorBanner=Sponsor::where('imageType','=','banner')->get();
+        $sponsorNormal=Sponsor::where('status','=','approved')->where('imageType','=','normal')->limit(3)->get();
+        $sponsorBanner=Sponsor::where('status','=','approved')->where('imageType','=','banner')->get();
         $category=Category::get();
         $breakingNews = Post::where('status','=','approve')->where('breaking','=','on')->get();
-        $hotPost = Post::where('status','=','approve')->get();
         $natPost = Post::where('status','=','approve')->where('cat_id','=',1)->limit(4)->get();
         $post = Post::where('status','=','approve')->latest()->limit(5)->get();
         return view('newshome.index',compact('post','category','breakingNews','natPost','sponsorNormal','sponsorBanner'));

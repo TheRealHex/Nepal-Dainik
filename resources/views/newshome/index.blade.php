@@ -88,7 +88,7 @@
         <div class="fashion_technology_area">
           <div class="fashion">
             <div class="single_post_content">
-              <h2><span>Something2</span></h2>
+              <h2><span>National</span></h2>
               <ul class="business_catgnav wow fadeInDown">
                 <li>
                   <figure class="bsbig_fig"> <a href="/single" class="featured_img"> <img alt="" src="images/featured_img2.jpg"> <span class="overlay"></span> </a>
@@ -123,7 +123,7 @@
           </div>
           <div class="technology">
             <div class="single_post_content">
-              <h2><span>Something3</span></h2>
+              <h2><span>Technology</span></h2>
               <ul class="business_catgnav">
                 <li>
                   <figure class="bsbig_fig wow fadeInDown"> <a href="/single" class="featured_img"> <img alt="" src="images/featured_img3.jpg"> <span class="overlay"></span> </a>
@@ -162,57 +162,18 @@
     <div class="col-lg-4 col-md-4 col-sm-4">
       <aside class="right_content">
         <div class="single_sidebar">
-          <h2><span>Technology</span></h2>
-          <ul class="spost_nav">
-            <li>
-              <div class="media wow fadeInDown"> <a href="/single" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="/single" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-              </div>
-            </li>
-          </ul>
+          <h2><span>Links</span></h2>
         </div>
         <div class="single_sidebar">
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="category">
               <ul>
-                <li class="cat-item"><a href="#">Sports</a></li>
-                <li class="cat-item"><a href="#">Fashion</a></li>
-                <li class="cat-item"><a href="#">Business</a></li>
-                <li class="cat-item"><a href="#">Technology</a></li>
-                <li class="cat-item"><a href="#">Games</a></li>
-                <li class="cat-item"><a href="#">Life &amp; Style</a></li>
-                <li class="cat-item"><a href="#">Photography</a></li>
+                @foreach($category as $row)
+                <li class="cat-item"><a href="{{route('newshome.category',$row->name )}}">{{ $row->name }}</a></li>
+                @endforeach
               </ul>
             </div>
-            <div role="tabpanel" class="tab-pane" id="video">
-              <div class="vide_area">
-                <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="comments">
-              <ul class="spost_nav">
-                <li>
-                  <div class="media wow fadeInDown"> <a href="/single" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="/single" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="/single" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="/single" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="/single" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="/single" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="/single" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="/single" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <br>
           </div>
         </div>
         <div class="single_sidebar wow fadeInDown">
@@ -232,7 +193,7 @@
       @foreach ($sponsorBanner as $s)
       <li style="display:inline-block">
         <a href="{{$s->website}}" target="_blank">
-        <img src="{{asset('/ads/'.$s->image)}}" height="85px" alt="add_banner">
+          <img src="{{asset('/ads/'.$s->image)}}" height="85px" alt="add_banner">
         </a>
       </li>
       @endforeach

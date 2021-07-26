@@ -16,8 +16,6 @@
   <!-- CSS Files -->
   <link href="{{ asset('assets/css/bootstrap.min') }}.css" rel="stylesheet" />
   <link href="{{ asset('assets/css/now-ui-dashboard.css?v=1.5.0') }}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -30,6 +28,7 @@
           Panel
         </a>
       </div>
+
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="{{'home' == request()->path()? 'active' : ''}}">
@@ -120,9 +119,9 @@
             </ul>
           </div>
           @endif
-          <li class="{{'user-mgmt' == request()->path()? 'active' : ''}}">
-            <a href="#">
-              <i class="fa fa-user-circle"></i>
+          <li>
+            <a href="{{route('user.profile')}}">
+              <i class="fa fa-asterisk"></i>
               <p>Settings</p>
             </a>
           </li>
@@ -153,6 +152,8 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  <img height="25px" width="25px" class="profile-user-img ml-5 shadow" style="border-radius: 50%; border:2px solid;" src="{{ asset('userImage/'.auth()->user()->image) }}"
+                  alt="User profile picture">
                   {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 

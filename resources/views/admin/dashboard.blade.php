@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('title')
 Dashboard
 @endsection
-
 @section('content')
 <div class="row text-light font-weight-bold">
   <div class="col-md-3">
@@ -47,7 +45,7 @@ Dashboard
     </div>
   </div>
 </div>
-  @if (Auth::user()->role->type == 'admin')
+@if (Auth::user()->role->type == 'admin')
 <div class="row text-light font-weight-bold">
   <div class="col-md-3">
     <div class="card shadow bg-warning">
@@ -71,7 +69,6 @@ Dashboard
   </div>
   @endif
   @endsection
-
   @section('scripts')
   <script type="text/javascript">
     var count = 100,views=3128;

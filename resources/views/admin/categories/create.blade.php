@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('title')
 Categories  Add
 @endsection
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -28,7 +26,5 @@ Categories  Add
     </div>
 </div>
 @endsection
-
 @section('scripts')
-
 @endsection

@@ -1,10 +1,6 @@
-@extends('layouts.master')
-
-@section('title')
+@extends('layouts.master')@section('title')
 Manage Posts
-@endsection
-
-@section('content')
+@endsection@section('content')
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -16,7 +12,5 @@ Manage Posts
     </div>
   </div>
 </div>
-@endsection
-
-@section('scripts')
+@endsection@section('scripts')
 @endsection

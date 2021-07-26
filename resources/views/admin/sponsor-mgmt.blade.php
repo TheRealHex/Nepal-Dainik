@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('title')
-    Manage sponsor
+Manage sponsor
 @endsection
-
 @section('content')
 <div class="row">
   <div class="col-md-12">
@@ -30,6 +28,9 @@
                         Website
                     </th>
                     <th>
+                        Type
+                    </th>
+                    <th>
                         Phone
                     </th>
                     <th>
@@ -38,9 +39,7 @@
                     <th>
                         Status
                     </th>
-                    <th>
-                        
-                    </th>
+
                     <th>
                         Submit
                     </th>
@@ -58,6 +57,9 @@
                           {{ $row->website }}
                       </td>
                       <td>
+                          {{ $row->imageType }}
+                      </td>
+                      <td>
                           {{ $row->phone }}
                       </td>
                       <td>
@@ -65,9 +67,9 @@
                       </td>
                       <td>
                         <br>
-                        @if ( ($row->status) == 'approve' )
+                        @if ( ($row->status) == 'approved' )
                         <a class="btn btn-success rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
-                        @elseif ( ($row->status) == 'decline' )
+                        @elseif ( ($row->status) == 'declined' )
                         <a class="btn btn-danger rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                         @else
                         <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
@@ -95,9 +97,7 @@
                                         <!-- Button trigger modal -->
                                             <button type="button" class="btn btn-sm  btn-danger  rounded" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
                                                 <i class="fas fa-trash"></i>
-                                            </button>
-
-                                            <!-- Modal -->
+                                            </button>                                            <!-- Modal -->
                                             <div class="modal fade" id="confirmdelete{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -127,7 +127,5 @@
                 </div>
             </div>
             @endsection
-
-@section('scripts')
-
-@endsection
+            @section('scripts')
+            @endsection

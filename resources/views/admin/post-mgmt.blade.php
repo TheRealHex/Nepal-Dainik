@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('title')
 Manage Posts
 @endsection
-
 @section('content')
 <div class="row">
   <div class="col-md-12">
@@ -39,9 +37,6 @@ Manage Posts
                         Status
                     </th>
                     <th>
-                        
-                    </th>
-                    <th>
                         Submit
                     </th>
                 </thead>
@@ -72,6 +67,8 @@ Manage Posts
                         @else
                         <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                         @endif
+                        </td>
+                        <td>
                         <form action="{{ route('manage.postStatus',$row->id) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
@@ -80,11 +77,31 @@ Manage Posts
                                 <option value="approve">Approve</option>
                                 <option value="decline">Decline</option>
                             </select>
-                            <td>
-                                
-                                <br><button class="btn btn-info" type="submit"><i class="fas fa-check-circle"></i></button><br><br>
-                            </form>
-                        </td>
+                                <button type="button" class="btn btn-sm  btn-info  rounded" data-toggle="modal" data-target="#remarks{{ $row->id }}">
+                                    <i class="fas fa-check-circle"></i>
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="remarks{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="ModalLabel">Remarks</h5>
+                                                <button type="buttons" class="close" data-dismiss="modal" aria-label="Close">
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <textarea class="form-control" name="remarks" placeholder="Message to the Author"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success mr-2 shadow font-weight-bold">Send</button>
+                                                <button type="button" class="btn btn-danger shadow font-weight-bold" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </form>
+                    </td>
                                     {{-- <td>
                                         <a href="{{ route('edit.post',$row->id) }}" class="btn btn-sm  btn-success rounded"><i class="fas fa-pencil-alt"></i></a>
                                     </td>
@@ -95,9 +112,7 @@ Manage Posts
                                         <!-- Button trigger modal -->
                                             <button type="button" class="btn btn-sm  btn-danger  rounded" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
                                                 <i class="fas fa-trash"></i>
-                                            </button>
-
-                                            <!-- Modal -->
+                                            </button>                                            <!-- Modal -->
                                             <div class="modal fade" id="confirmdelete{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -127,6 +142,5 @@ Manage Posts
                 </div>
             </div>
             @endsection
-
             @section('scripts')
             @endsection
