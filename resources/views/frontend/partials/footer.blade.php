@@ -16,27 +16,17 @@
                 <div class="footer_widget wow fadeInDown">
                     <h2>Jump To</h2>
                     <ul class="tag_nav">
-                        <li><a href="#">Latest</a></li>
-                        <li><a href="#">Popular</a></li>
-                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#top">Search</a></li>
+                        <li><a href="#center">Content</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <div class="footer_widget wow fadeInRightBig">
-                    <h2>Contact</h2>
+                    <h2>Sponsor</h2>
                     <ul class="tag_nav">
                         <li>
-                            <a href="#">Leave us a message</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sponsor')}}">Advertise in the Post</a>
-                        </li>
-                        <li>
-                            <a href="#">Work for the Post</a>
-                        </li>
-                        <li>
-                            <a href="#">Send us a tip</a>
+                            <a href="{{route('sponsor')}}">Advertise your company</a>
                         </li>
                     </ul>
                 </div>
@@ -44,7 +34,7 @@
         </div>
     </div>
     <div class="footer_bottom">
-        <p class="copyright text-center">Copyright &copy; {{ date('Y') }}</p>
+        <p class="copyright text-center">Copyright &copy; Nepal Dainik, {{ date('Y') }}</p>
         <a href="#" class="scrollup" title="Goto Top" data-placement="top"></a>
     </div>
 </footer>

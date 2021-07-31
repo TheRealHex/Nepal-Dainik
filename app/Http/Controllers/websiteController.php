@@ -21,7 +21,11 @@ class websiteController extends Controller
         $breakingNews = Post::where('status','=','approve')->where('breaking','=','on')->get();
         $natPost = Post::where('status','=','approve')->where('cat_id','=',1)->limit(4)->get();
         $post = Post::where('status','=','approve')->latest()->limit(5)->get();
-        return view('newshome.index',compact('post','category','breakingNews','natPost','sponsorNormal','sponsorBanner'));
+        $slider = Post::where('status','=','approve')->get();
+        $editorPick = Post::where('tag','=','editor')->latest()->limit(5)->get();
+        $fashion = Post::where('cat_id','=','7')->latest()->limit(5)->get();
+        $tech = Post::where('cat_id','=','6')->latest()->limit(5)->get();
+        return view('newshome.index',compact('post', 'slider','fashion', 'tech','editorPick','category','breakingNews','natPost','sponsorNormal','sponsorBanner'));
     }
     public function showPost($title)
     {

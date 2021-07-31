@@ -9,7 +9,7 @@
                         <script> document.write(new Date().toDateString());</script>
                     </div>
                     <ul class="top_nav">
-                        <div class="header_top_right">
+                        <div class="header_top_right" id="top">
                             <form action="{{route('search')}}" method="get">
                                 {{ csrf_field() }}
                                 {{ method_field('PUT') }}
@@ -72,8 +72,6 @@
                                 <li><a href="{{route('newshome.category',$row->name )}}">{{ $row->name }}</a></li>
                                 @endforeach
                         <li><a href="https://covid19.mohp.gov.np/" target="_blank">Covid 19</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="{{route('newshome.contact')}}">Contact</a></li>
                     </ul>
                 </div>
                 <hr>

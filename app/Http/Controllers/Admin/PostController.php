@@ -31,15 +31,6 @@ class PostController extends Controller
     return view('admin.post-mgmt',compact('posts'));
   }
 
-
-  // Editor
-  public function editorIndex()
-  {
-    $posts=Post::with('category')->where('user_id','=',Auth()->id())->get();
-    return view('editor.post-mgmt',compact('posts'));
-  }
-
-
   // Writer
   public function writerIndex()
   {

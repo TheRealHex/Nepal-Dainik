@@ -16,7 +16,7 @@ Manage Posts
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" style="text-align: center;">
                 <thead class=" text-primary">
                     <th>
                         ID
@@ -51,21 +51,25 @@ Manage Posts
                       </td>
                       <td>
                           {{ $row->title }}
+                          &nbsp;
+                              @if(($row->breaking)=='on')
+                            <span class="font-weight-bold" style="color:red;"><i class='fa fa-fire'></i></span>
+                            @endif
                       </td>
                       <td>
                           {{ $row->category->name }}
                       </td>
                       <td>
-                          {{ substr($row->content,0,20) }}
+                        <a href='/edit-post/{{$row->id}}' class='text-dark'>{{ substr($row->content,0,20) }}</a>
                       </td>
                       <td>
                         <br>
                         @if ( ($row->status) == 'approve' )
-                        <a class="btn btn-success rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
+                            <a class="btn btn-success rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                         @elseif ( ($row->status) == 'decline' )
-                        <a class="btn btn-danger rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
+                            <a class="btn btn-danger rounded font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                         @else
-                        <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
+                          <a class="btn btn-warning rounded shadow font-weight-bold text-white">{{ ucfirst($row->status) }}</a>
                         @endif
                         </td>
                         <td>
@@ -99,48 +103,15 @@ Manage Posts
                                         </div>
                                     </div>
                                 </div>
-
                         </form>
                     </td>
-                                    {{-- <td>
-                                        <a href="{{ route('edit.post',$row->id) }}" class="btn btn-sm  btn-success rounded"><i class="fas fa-pencil-alt"></i></a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('delete.post',$row->id) }}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-sm  btn-danger  rounded" data-toggle="modal" data-target="#confirmdelete{{ $row->id }}">
-                                                <i class="fas fa-trash"></i>
-                                            </button>                                            <!-- Modal -->
-                                            <div class="modal fade" id="confirmdelete{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Deletion</h5>
-                                                            <button type="buttons" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Are you sure to delete this existing user permanently?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-danger mr-2 shadow font-weight-bold">Delete</button>
-                                                            <button type="button" class="btn btn-info shadow font-weight-bold" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            @endsection
-            @section('scripts')
-            @endsection
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+@endsection
+@section('scripts')
+@endsection
