@@ -3,7 +3,7 @@
 <section id="contentSection" style="padding: 0 100px;">
   <div class="row">
     {{-- @foreach($category as $c) --}}
-    <div class="title" style="background-color: lightcoral; border-radius: 1em; color: white;">
+    <div class="title" style="background-color: lightcoral; border-radius: 1em; color: white; padding: 1px;">
       <h4>{{$title}}</h4>
     </div>
     <br>
@@ -30,8 +30,8 @@
     </div>
     <div class="single_sidebar" style="border-bottom: 0px;">
       <br><br>
-      <ul class="nav nav-tabs" style="border-radius: 2em;" role="tablist">
-        <li role="presentation"><a href="#" class="bg-primary" aria-controls="profile" role="tab">Others</a>
+      <ul class="nav nav-tabs" style="border-radius: 2em; width: 50%; margin:auto;" role="tablist">
+        <li role="presentation"><a href="#" class="bg-primary"aria-controls="profile" role="tab">Others</a>
         </ul>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="category">

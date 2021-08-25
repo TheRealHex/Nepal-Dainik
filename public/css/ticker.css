@@ -3,28 +3,28 @@
     flex-wrap: wrap;
     margin: 0 0 2% 0;
     border-radius: 2em;
-    padding: 0 6px 0 6px;
+    padding: 10px 0 10px 0;
     background-color: #de5555;
     font-weight: bold;
 }
 .news {
     width: 80%;
+    padding-top: 0.5%;
 }
 .title {
     width: 14%;
     text-align: center;
     position: relative;
-    margin-right: 2em;
     color: #000;
 }
 .title p {
     font-size: 1.1em;
-    margin: 12% 3px 0 3px;
+    margin: 3px 3px 0 3px;
     color: #fff;
 }
 
-@media(max-width:1199px ){.ticker { padding: 0; } .title{margin-right: 1em;} .news{} .title > p{margin: 7% 3px 3px 3px}}
-@media(max-width:679px ){.ticker { padding: 0; } .title{margin-right: 1em; font-size: 80%;} .news{font-size: 74%;} .title > p{margin: 12% 3px 3px 3px}}
-@media(max-width:542px ){.ticker { padding: 0; } .title{margin-right: 1em; font-size: 74%;} .news{font-size: 68%;} .title > p{margin: 12% 3px 3px 3px}}
-@media(max-width:505px ){.ticker { padding: 0; } .title{margin-right: 1em; font-size: 59%;} .news{font-size: 56%;} .title > p{margin: 24% 3px 3px 3px}}
-@media(max-width:432px ){.ticker { padding: 0; } .title{margin-right: 1em; font-size: 59%;} .news{font-size: 44%;} .title > p{margin: 40% 3px 3px 3px}}
+@media(max-width:1199px ){.news{} .title > p{margin: 7% 3px 3px 3px}}
+@media(max-width:679px ){.ticker { padding: 0; } .title{ font-size: 80%;} .news{font-size: 74%;} }
+@media(max-width:542px ){.ticker { padding: 0; } .title{ font-size: 74%;} .news{font-size: 68%;} }
+@media(max-width:505px ){.ticker { padding: 0; } .title{ font-size: 59%;} .news{font-size: 56%;} }
+@media(max-width:432px ){.ticker { padding: 0; } .title{ font-size: 59%;} .news{font-size: 44%;} }

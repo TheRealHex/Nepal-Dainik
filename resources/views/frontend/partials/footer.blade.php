@@ -16,7 +16,7 @@
                 <div class="footer_widget wow fadeInDown">
                     <h2>Jump To</h2>
                     <ul class="tag_nav">
-                        <li><a href="#top">Search</a></li>
+                        <li><a href="#search">Search</a></li>
                         <li><a href="#center">Content</a></li>
                     </ul>
                 </div>

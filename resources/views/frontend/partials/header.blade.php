@@ -13,7 +13,7 @@
                             <form action="{{route('search')}}" method="get">
                                 {{ csrf_field() }}
                                 {{ method_field('PUT') }}
-                                <input style="background-color: #eee; font-size: 15px; border-color: transparent; border-radius: 2em; padding-left: 1em;" type="text" name="search" placeholder="Search">
+                                <input style="background-color: #eee; font-size: 15px; border-color: transparent; border-radius: 2em; padding-left: 1em;" type="text" name="search" id="search" placeholder="Search">
                                 <button class = "btn" style=" border-radius: 6px;">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -60,7 +60,7 @@
         <section id="navArea">
             <nav class="" role="navigation">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span><i class="fa fa-arrow" ></i></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="height: 2.7em;"> <span class="sr-only">Toggle navigation</span> <span><i class="fa fa-arrow-down"></i></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <br>
@@ -71,10 +71,10 @@
                                 @foreach($category as $row)
                                 <li><a href="{{route('newshome.category',$row->name )}}">{{ $row->name }}</a></li>
                                 @endforeach
-                        <li><a href="https://covid19.mohp.gov.np/" target="_blank">Covid 19</a></li>
-                    </ul>
-                </div>
-                <hr>
-            </nav>
-        </section>
-    </header>
+                                <li><a href="https://covid19.mohp.gov.np/" target="_blank">Covid 19</a></li>
+                            </ul>
+                        </div>
+                        <hr>
+                    </nav>
+                </section>
+            </header>
