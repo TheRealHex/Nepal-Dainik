@@ -14,10 +14,10 @@ Preview Post
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                 @if (Auth::user()->role->type == 'writer')
-                 <h4 class="p-1">Edit Post</h4>
-                 @endif
-                 <div class="card-body col">
+                   @if (Auth::user()->role->type == 'writer')
+                   <h4 class="p-1">Edit Post</h4>
+                   @endif
+                   <div class="card-body col">
                     <form action="{{route('update.post',$post->id)}}" method="POST" class="font-weight-bold" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
@@ -44,7 +44,7 @@ Preview Post
                         <div class="form-group row m-4">
                             <label class="col-form-label">Category&nbsp;&nbsp;&nbsp;</label>
                             <div class=" ml-5 mt-5">
-                               <select class="form-control" border-color: lightcoral;" name="cat_id">
+                             <select class="form-control" border-color: lightcoral;" name="cat_id">
                                 @foreach($category as $cat)
                                 <option value="{{$cat->id}}" @if($post->cat_id == $cat->id) ? selected @endif>{{$cat->name}}</option>
                                 @endforeach
@@ -61,8 +61,6 @@ Preview Post
                         </label>
                         <br><br>
                         @if (Auth::user()->role->type == 'writer')
-                        <label for="date"></label>Post date <br>
-                        <input class="form-control" style="width:70%;" type="date" name="postDate" value="{{$post->postdate}}">
                     </div>
                     <a class="btn btn-danger float-right font-weight-bold p-3 ml-3 shadow text-light" href="{{ route('post.index') }}">Cancel</a>
                     <button type="submit" class="btn btn-success float-right font-weight-bold p-3 shadow">Update</button>

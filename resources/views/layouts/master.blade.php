@@ -21,7 +21,6 @@
 <body class="">
   <div class="wrapper">
     <div class="sidebar" data-color="blue" style="font-size: 18px;">
-      <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow" -->
       <div class="logo simple-text logo-normal">
         <a class="simple-text logo-normal text-align-center font-weight-bold">
           {{Auth::user()->role->type}}
@@ -158,6 +157,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('newshome.index') }}">Home</a>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">

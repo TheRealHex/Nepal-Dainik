@@ -33,7 +33,7 @@ Create a new post
                                 </script>
                             </div>
                             <div class="ml-5 mt-5">
-                               <select class="form-control  " style="width: 70%; border-color: lightcoral;" name="cat_id">
+                             <select class="form-control  " style="width: 70%; border-color: lightcoral;" name="cat_id">
                                 <option disabled>Select Category</option>
                                 @foreach($category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -47,8 +47,6 @@ Create a new post
                             <label for="breaking">
                                 <input type="checkbox" name="breaking" id="breaking"> Breaking News
                             </label><br><br>
-                            <label for="date"></label>Post date <br>
-                            <input class="form-control" style="width:70%;" type="date" name="postDate">
                         </div>
                         <br>
                         <div class="card-footer float-right" style="margin-right: 3em;">

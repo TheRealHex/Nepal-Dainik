@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-            $todayPost = Post::whereDate('postdate', Carbon::today())->count();
+            $todayPost = Post::whereDate('created_at', Carbon::today())->count();
             $editor = User::where('role_id','=','2')->count();
             $writer = User::where('role_id','=','1')->count();
             return view('admin.dashboard', compact('writer','editor','todayPost'));

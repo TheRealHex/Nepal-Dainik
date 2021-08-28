@@ -16,13 +16,12 @@ class AddTagToPosts extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->string('tag')->nullable()->after('status');
             $table->string('breaking')->nullable()->after('tag');
-            $table->date('postdate')->nullable()->after('breaking');
         });
     }
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn(['tag','breaking','postdate']);
+            $table->dropColumn(['tag','breaking']);
         });
     }
 }

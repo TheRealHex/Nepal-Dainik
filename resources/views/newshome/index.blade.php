@@ -48,7 +48,7 @@
               <li>
                 <div class="media"> <a href="{{route('newshome.showPost',$p->title)}}" class="media-left"> <img src="{{asset('/image/'.$p->image)}}"></a>
                   <div class="media-body"> <a href="{{route('newshome.showPost',$p->title)}}" class="catg_title text-danger" style="font-weight: bold;">{{$p->title}}</a> 
-                    <p style=" height: 80px;width: 180px;overflow: hidden;">{{$p->content}}</p>
+                    <p style=" height: 40px;width: auto;overflow: hidden;">{{$p->content}}</p>
                   </div>
                 </div>
               </li>
@@ -83,7 +83,7 @@
                   <li>
                     <div class="media wow fadeInDown"> <a href="{{route('newshome.showPost',$nat->title)}}" class="media-left"> <img alt="" src="{{asset('/image/'.$nat->image)}}"> </a>
                       <div class="media-body"> <a href="{{route('newshome.showPost',$nat->title)}}" class="catg_title"> {{$nat->title}}</a>
-                        <p style=" height: 80px;width: 180px;overflow: hidden;">{{$p->content}}</p>
+                        <p style=" height: 80px;width: 180px;overflow: hidden;">{{$nat->content}}</p>
                       </div>
                     </div>
                   </li>

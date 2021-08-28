@@ -71,7 +71,6 @@ class PostController extends Controller
         $post->user_id = Auth()->id();
         $post->tag = $request->input('tags');
         $post->breaking = $request->input('breaking');
-        $post->postdate = $request->input('postDate');
         $post->save();
         return redirect()->route('post.index')->with('status','Post added on pending.');
       }
@@ -115,7 +114,6 @@ class PostController extends Controller
         $post->cat_id = $request->input('cat_id');
         $post->breaking = $request->input('breaking');
         $post->tag = $request->input('tags');
-        $post->postdate = $request->input('postDate');
         $post->update();
         return redirect()->route('post.index')->with('status','Post Updated.');
       }
